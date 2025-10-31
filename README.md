@@ -1,98 +1,67 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Desafio 0002: API Idempotente
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Descrição
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Neste desafio, você deve criar uma API que demonstre o conceito de idempotência. Uma operação idempotente é aquela que, quando aplicada múltiplas vezes, produz o mesmo resultado que se fosse aplicada uma única vez.
 
-## Description
+## Requisitos
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+1. Criar uma API REST que implemente um endpoint para criar um recurso (por exemplo, uma ordem de pagamento)
+2. A API deve ser idempotente, garantindo que múltiplas requisições com o mesmo ID de idempotência produzam o mesmo resultado
+3. Implementar validação de entrada
+4. Implementar tratamento de erros
+5. Documentar a API (usando Swagger/OpenAPI ou similar)
+6. Incluir testes unitários e de integração
 
-## Project setup
+## Exemplo de Uso
 
-```bash
-$ npm install
+```http
+POST /api/v1/orders
+Idempotency-Key: 550e8400-e29b-41d4-a716-446655440000
+Content-Type: application/json
+
+{
+    "amount": 100.00,
+    "currency": "BRL",
+    "description": "Test order"
+}
 ```
 
-## Compile and run the project
+## Critérios de Avaliação
 
-```bash
-# development
-$ npm run start
+1. Implementação correta do conceito de idempotência
+2. Qualidade do código e boas práticas
+3. Cobertura de testes
+4. Documentação clara
+5. Tratamento adequado de erros
+6. Performance e escalabilidade da solução
 
-# watch mode
-$ npm run start:dev
+## Tecnologias Sugeridas
 
-# production mode
-$ npm run start:prod
-```
+- Node.js/TypeScript
+- Python/FastAPI
+- Java/Spring Boot
+- Go
+- Qualquer outra stack de sua preferência
 
-## Run tests
+## Como Participar
 
-```bash
-# unit tests
-$ npm run test
+1. Faça um fork deste repositório
+2. Crie uma pasta com seu nome dentro do diretório `0002-idempotent-api`
+3. Implemente sua solução
+4. Abra um pull request com sua implementação
 
-# e2e tests
-$ npm run test:e2e
+## Dicas
 
-# test coverage
-$ npm run test:cov
-```
+- Considere usar um banco de dados para armazenar o estado das operações
+- Implemente um mecanismo de limpeza para chaves de idempotência antigas
+- Pense em casos de concorrência e como lidar com eles
+- Considere diferentes cenários de falha e como recuperar-se deles
 
-## Deployment
+## Referências
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+- [REST API Design: Idempotency](https://restfulapi.net/idempotent-rest-apis/) - Explicação detalhada sobre APIs idempotentes
+- [Stripe's Idempotency Keys](https://stripe.com/blog/idempotency) - Como o Stripe implementa idempotência
+- [HTTP Idempotency](https://datatracker.ietf.org/doc/html/rfc7231#section-4.2.2) - RFC oficial sobre idempotência em HTTP
+- [Idempotency in Distributed Systems](https://www.youtube.com/watch?v=QhTj3Ax98sY) - Palestra sobre idempotência em sistemas distribuídos
+- [Idempotency Patterns](https://martinfowler.com/articles/patterns-of-distributed-systems/idempotent-receiver.html) - Padrões de idempotência por Martin Fowler
