@@ -44,13 +44,6 @@ Content-Type: application/json
 - Go
 - Qualquer outra stack de sua preferência
 
-## Como Participar
-
-1. Faça um fork deste repositório
-2. Crie uma pasta com seu nome dentro do diretório `0002-idempotent-api`
-3. Implemente sua solução
-4. Abra um pull request com sua implementação
-
 ## Dicas
 
 - Considere usar um banco de dados para armazenar o estado das operações
