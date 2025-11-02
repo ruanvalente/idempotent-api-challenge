@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { EnvironmentConfigModule } from '../config/env/environment-config.module';
 import { EnvironmentConfigService } from '../config/env/environment-config.validation';
+import { Order } from 'src/modules/orders/entities/order.entity';
 
 @Module({
   imports: [
@@ -16,11 +17,11 @@ import { EnvironmentConfigService } from '../config/env/environment-config.valid
         username: configService.get<string>('DB_USERNAME'),
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_DATABASE'),
-        entities: [],
+        entities: [Order],
         synchronize: true,
       }),
     }),
-    TypeOrmModule.forFeature([]),
+    TypeOrmModule.forFeature([Order]),
   ],
   exports: [TypeOrmModule],
 })
